@@ -59,10 +59,9 @@ class MirrorGrid extends Component {
                 isResizable={false}
                 isDraggable={false}>
                 <div style={GridItemStyle} key="topten">
-                    <h3>Today's Top Ten Repos for {this.state.topTenDate}</h3>
+                    <h3>Yesterday's Top Ten Repos for {this.state.topTenDate}</h3>
                     <ol className="topTen">
                         {this.state.topTen && this.state.topTen.map(distro => {
-                            // console.log(distro);
                             return (
                                 <li>
                                     {distro.distro}
