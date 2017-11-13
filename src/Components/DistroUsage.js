@@ -34,7 +34,7 @@ const Distro = (props) => {
     const { distro, bytes } = props.distro;
     return (
       <DistroContainer style={props.style} key={props.key}>
-        <h3>{distro}</h3>
+        <h3>{props.num}: {distro}</h3>
         <span>{minimizeBytes(bytes)}</span>
       </DistroContainer>
     );
@@ -79,7 +79,7 @@ class DistroUsage extends Component {
                   isDraggable={false}>
                   {
                     this.state.distrousage.map(
-                      (distro, x) => <Distro distro={distro} key={x} data-grid={{x: x%3, y: Math.ceil(x/3), w: 1, h: 1}}/>
+                      (distro, x) => <Distro num={x+1} distro={distro} key={x} data-grid={{x: x%3, y: Math.ceil(x/3), w: 1, h: 1}}/>
                     )
                   }
                 </ReactGridLayout>

@@ -6,6 +6,10 @@ import Ink from 'react-ink';
 
 import MainStats from './Components/MainStats';
 import DistroUsage from './Components/DistroUsage';
+import HourlyPage from './Components/HourlyPage';
+import DailyPage from './Components/DailyPage';
+import MonthlyPage from './Components/MonthlyPage';
+import AggregatePage from './Components/AggregatePage';
 import StyledLink from './Components/StyledLink';
 
 import {
@@ -31,7 +35,7 @@ class App extends Component {
           <StyledLink to="/hourly"><Ink/>Hourly</StyledLink>
           <StyledLink to="/daily"><Ink/>Daily</StyledLink>
           <StyledLink to="/monthly"><Ink/>Monthly</StyledLink>
-          <StyledLink to="/pb"><Ink/>PB Countdown</StyledLink>
+          <StyledLink to="/agg"><Ink/>Agg. Stats</StyledLink>
         </nav>
         <section id="mainarea">
           <header>
@@ -41,6 +45,10 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={MainStats} />
               <Route path="/distrousage" component={DistroUsage} />
+              <Route path="/hourly" component={HourlyPage} />
+              <Route path="/daily" component={DailyPage} />
+              <Route path="/monthly" component={MonthlyPage} />
+              <Route path="/agg" component={AggregatePage} />
               <Route component={CouldNotFindPage} />
             </Switch>
           </main>
