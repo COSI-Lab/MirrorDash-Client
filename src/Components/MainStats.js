@@ -2,10 +2,13 @@ import Lokka from 'lokka';
 import { Transport } from 'lokka-transport-http';
 import React, { Component } from 'react';
 import MirrorGrid from './MirrorGrid';
+import SlideInDiv from './SlideInDiv';
 
 const client = new Lokka({
     transport: new Transport('http://localhost:4000/graphql')
 });
+
+
 
 class MainStats extends Component {
     constructor(props) {
@@ -51,13 +54,13 @@ class MainStats extends Component {
 
     render() {
       return (
-        <div>
-          <h2>Overall Stats</h2>
+        <SlideInDiv>
+          <h2 style={{marginLeft: 30, marginBottom: -20, color: '#4b4b4b', fontSize: '100%'}}>Overall Stats</h2>
           {this.state.topTen ?
             <MirrorGrid topTen={this.state.topTen} topTenDate={this.state.topTenDate} days={this.state.days}/>
           :
             <MirrorGrid />}
-        </div>
+        </SlideInDiv>
       );
     }
 

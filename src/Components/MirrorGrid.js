@@ -55,7 +55,7 @@ class MirrorGrid extends Component {
                 cols={12}
                 rowHeight={150}
                 margin={[30, 30]}
-                width={900}
+                width={960}
                 isResizable={false}
                 isDraggable={false}>
                 <div style={GridItemStyle} key="topten">

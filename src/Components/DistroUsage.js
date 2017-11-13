@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import React, { Component } from 'react';
 import Lokka from 'lokka';
 import { Transport } from 'lokka-transport-http';
+import SlideInDiv from './SlideInDiv';
+
+import '../../node_modules/react-grid-layout/css/styles.css';
+import '../../node_modules/react-resizable/css/styles.css';
+
+import ReactGridLayout from 'react-grid-layout';
 
 import { minimizeBytes } from '../util';
 
@@ -24,17 +30,10 @@ const DistroContainer = styled.div`
   }
 `;
 
-const DistrosGrid = styled.div`
-  display: grid;
-  width: 900px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-`;
-
 const Distro = (props) => {
     const { distro, bytes } = props.distro;
     return (
-      <DistroContainer>
+      <DistroContainer style={props.style} key={props.key}>
         <h3>{distro}</h3>
         <span>{minimizeBytes(bytes)}</span>
       </DistroContainer>
@@ -67,15 +66,26 @@ class DistroUsage extends Component {
 
       render() {
           return (
-              <div>
-                <h2>Daily Distro Stats</h2>
-                <DistrosGrid>
-                  {this.state.distrousage && this.state.distrousage.map(distro => {
-                    return <Distro distro={distro}/>;
-                  })}
-                </DistrosGrid>
-              </div>
-          )
+            <SlideInDiv>
+              <h2 style={{marginLeft: 30, marginBottom: -20, color: '#4b4b4b', fontSize: '100%'}}>Daily Distro Stats</h2>
+              {this.state.distrousage &&
+                <ReactGridLayout
+                  className="layout"
+                  cols={3}
+                  rowHeight={100}
+                  width={960}
+                  margin={[30, 30]}
+                  isResizable={false}
+                  isDraggable={false}>
+                  {
+                    this.state.distrousage.map(
+                      (distro, x) => <Distro distro={distro} key={x} data-grid={{x: x%3, y: Math.ceil(x/3), w: 1, h: 1}}/>
+                    )
+                  }
+                </ReactGridLayout>
+              }
+            </SlideInDiv>
+          );
       }
 }
 
