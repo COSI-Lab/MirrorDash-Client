@@ -5392,6 +5392,10 @@ react-grid-layout@^0.16.0:
     react-draggable "^3.0.3"
     react-resizable "^1.7.5"
 
+react-ink@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-ink/-/react-ink-6.2.0.tgz#b268107bf986c6009bd38d7d3baa9fba1016e368"
+
 react-resizable@^1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.7.5.tgz#83eb75bb3684da6989bbbf4f826e1470f0af902e"

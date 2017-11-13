@@ -11,6 +11,7 @@ const StyledLink = styled(Link)`
     font-size: 14px;
     text-decoration: none;
     color: white;
+    position: relative;
 `;
 
 export default StyledLink;

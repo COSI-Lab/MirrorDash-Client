@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Profile from './profile.jpg';
+import Ink from 'react-ink';
 
 import MainStats from './Components/MainStats';
 import DistroUsage from './Components/DistroUsage';
@@ -25,12 +26,12 @@ class App extends Component {
       <div className="App">
         <nav>
           <img src={Profile} />
-          <StyledLink to="/">Overall</StyledLink>
-          <StyledLink to="/distrousage">Distro Usage</StyledLink>
-          <StyledLink to="/hourly">Hourly</StyledLink>
-          <StyledLink to="/daily">Daily</StyledLink>
-          <StyledLink to="/monthly">Monthly</StyledLink>
-          <StyledLink to="/pb">PB Countdown</StyledLink>
+          <StyledLink to="/"><Ink/>Overall</StyledLink>
+          <StyledLink to="/distrousage"><Ink/>Distro Usage</StyledLink>
+          <StyledLink to="/hourly"><Ink/>Hourly</StyledLink>
+          <StyledLink to="/daily"><Ink/>Daily</StyledLink>
+          <StyledLink to="/monthly"><Ink/>Monthly</StyledLink>
+          <StyledLink to="/pb"><Ink/>PB Countdown</StyledLink>
         </nav>
         <section id="mainarea">
           <header>
