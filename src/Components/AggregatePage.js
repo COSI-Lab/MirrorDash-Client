@@ -35,12 +35,13 @@ class AggregatePage extends Component {
     render() {
         const aggStyle = {
             padding: 10,
-            marginTop: 22,
+            marginTop: 25,
             marginLeft: 26,
             backgroundColor: 'white',
             width: 500,
             fontSize: 20,
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+            borderRadius: 5
         }
 
         return (

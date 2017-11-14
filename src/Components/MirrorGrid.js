@@ -38,6 +38,7 @@ class MirrorGrid extends Component {
         const GridItemStyle = {
             boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
             borderRadius: '3px',
+            borderRadius: 5
         };
 
         let rateDiff, txDiff, rxDiff;
@@ -77,24 +78,24 @@ class MirrorGrid extends Component {
                     <h3>Today's Transfer</h3>
                     {this.state.days && <div className="today_value">{minimizeBytes(this.state.days[0].tx)}</div>}<br/>
                     {this.state.days && txDiff >= 0.0 ?
-                        <span style={{color: 'green'}}>&#9650;{txDiff}% up</span> :
-                        <span style={{color: 'red'}}>&#9660;{txDiff*-1}% down</span>
+                        <span className="diff" style={{color: 'green'}}>&#9650;{txDiff}% up</span> :
+                        <span className="diff" style={{color: 'red'}}>&#9660;{txDiff*-1}% down</span>
                     }
                 </div>
                 <div style={GridItemStyle} key="today_rx" id="today_rx">
                     <h3>Today's Recieved</h3>
                     {this.state.days && <div className="today_value">{minimizeBytes(this.state.days[0].rx)}</div>}<br/>
                     {this.state.days && rxDiff >= 0.0 ?
-                        <span style={{color: 'green'}}>&#9650;{rxDiff}% up</span> :
-                        <span style={{color: 'red'}}>&#9660;{rxDiff*-1}% down</span>
+                        <span className="diff" style={{color: 'green'}}>&#9650;{rxDiff}% up</span> :
+                        <span className="diff" style={{color: 'red'}}>&#9660;{rxDiff*-1}% down</span>
                     }
                 </div>
                 <div style={GridItemStyle} key="today_rate" id="today_rate">
                     <h3>Today's Rate</h3>
                     {this.state.days && <div className="today_value">{this.state.days[0].rate.toFixed(2)}Mbit/s</div>}<br/>
                     {this.state.days && rateDiff >= 0.0 ?
-                        <span style={{color: 'green'}}>&#9650;{rateDiff}% up</span> :
-                        <span style={{color: 'red'}}>&#9660;{rateDiff*-1}% down</span>
+                        <span className="diff" style={{color: 'green'}}>&#9650;{rateDiff}% up</span> :
+                        <span className="diff" style={{color: 'red'}}>&#9660;{rateDiff*-1}% down</span>
                     }
                 </div>
             </ReactGridLayout>

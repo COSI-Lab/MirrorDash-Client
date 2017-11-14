@@ -42,7 +42,8 @@ class HourlyPage extends Component {
     render() {
         const hourStyle = {
             padding: 10,
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+            borderRadius: 5
         }
 
         return (

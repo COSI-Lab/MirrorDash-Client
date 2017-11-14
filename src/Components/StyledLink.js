@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.5);
+    border-top: 2px solid rgba(0,0,0,0.45);
     font-size: 14px;
     text-decoration: none;
     color: white;

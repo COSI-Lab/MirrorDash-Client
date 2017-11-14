@@ -8,8 +8,6 @@ const client = new Lokka({
     transport: new Transport('http://localhost:4000/graphql')
 });
 
-
-
 class MainStats extends Component {
     constructor(props) {
       super(props);

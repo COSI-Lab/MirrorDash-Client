@@ -36,3 +36,7 @@ h3 {
 .today_value {
     font-size: 2rem;
 }
+
+.diff {
+    margin-top: 15px;
+}

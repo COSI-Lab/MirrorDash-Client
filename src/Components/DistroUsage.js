@@ -24,6 +24,7 @@ const DistroContainer = styled.div`
   height: 80px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
 
   h3 {
     margin-top: 0;
