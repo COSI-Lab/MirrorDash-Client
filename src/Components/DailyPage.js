@@ -4,6 +4,7 @@ import Lokka from 'lokka';
 import { Transport } from 'lokka-transport-http';
 
 import SlideInDiv from './SlideInDiv';
+import TimeChart from './TimeChart';
 
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
@@ -46,6 +47,36 @@ class DailyPage extends Component {
             borderRadius: 5
         }
 
+        let dayElems = <div>Loading...</div>;
+        let txs = [];
+        let rxs = [];
+
+        if(this.state.days) {
+            dayElems = this.state.days.map((day, x) => (
+                <div style={dayStyle} key={x} data-grid={{x: x%2, y: 3 + Math.ceil(x/2), w: 1, h: 1}}>
+                    <div style={{textAlign: 'center', fontSize: '110%', marginBottom: 10}}>{day.date}</div>
+                    <div>Transfer: {minimizeBytes(day.tx)}</div>
+                    <div>Recieve: {minimizeBytes(day.rx)}</div>
+                    <div>Rate: {day.rate.toFixed(2)}Mbit/s</div>
+                </div>
+            ));
+
+            txs = this.state.days.map(day => {
+                return {
+                    'Time': day.date,
+                    'Transferred Bandwidth': day.tx,
+                    'label': `Transferred: ${(day.tx/1000000000000).toFixed(3)}TB\nRecieved: ${(day.rx/1000000000000).toFixed(3)}TB\nRate: ${day.rate.toFixed(2)}Mbit/s`
+                };
+            }).reverse();
+
+            rxs = this.state.days.map(day => {
+                return {
+                    'Time': day.date,
+                    'Recieved Bandwidth': day.rx
+                };
+            }).reverse();
+        }
+
         return (
             <SlideInDiv>
                 <h2 style={{marginLeft: 30, marginBottom: -20, color: '#4b4b4b', fontSize: '100%'}}>Daily Stats</h2>
@@ -57,14 +88,10 @@ class DailyPage extends Component {
                     margin={[30, 30]}
                     isResizable={false}
                     isDraggable={false}>
-                {this.state.days && this.state.days.map((day, x) => (
-                    <div style={dayStyle} key={x} data-grid={{x: x%2, y: Math.ceil(x/2), w: 1, h: 1}}>
-                        <div style={{textAlign: 'center', fontSize: '110%', marginBottom: 10}}>{day.date}</div>
-                        <div>Transfer: {minimizeBytes(day.tx)}</div>
-                        <div>Recieve: {minimizeBytes(day.rx)}</div>
-                        <div>Rate: {day.rate.toFixed(2)}Mbit/s</div>
+                    <div style={dayStyle} key="graph" data-grid={{x: 0, y: 0, w: 2, h: 3}}>
+                        <TimeChart hour={false} txs={txs} rxs={rxs} />
                     </div>
-                ))}
+                    {dayElems}
                 </ReactGridLayout>
             </SlideInDiv>
         )
