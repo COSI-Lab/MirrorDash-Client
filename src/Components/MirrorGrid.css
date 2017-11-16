@@ -1,42 +1,44 @@
 .react-grid-item {
-    background-color: white;
-    padding: 10px;
+  background-color: white;
+  padding: 10px;
 }
 
 h3 {
-    margin-top: 10px;
-    text-align: center;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .topTen {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .topTen li {
-    font-size: 18px;
-    padding-bottom: 10px;
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 .topTen li span {
-    font-size: 12px;
-    display: block;
+  font-size: 12px;
+  display: block;
 }
 
 .react-grid-item {
-    color: black;
+  color: black;
 }
 
-#today_rx, #today_rate, #today_tx {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#today_rx,
+#today_rate,
+#today_tx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .today_value {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .diff {
-    margin-top: 15px;
+  margin-top: 15px;
 }
