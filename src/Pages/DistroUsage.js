@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { Component } from "react";
 import Lokka from "lokka";
 import { Transport } from "lokka-transport-http";
-import SlideInDiv from "./SlideInDiv";
+import SlideInDiv from "../Components/SlideInDiv";
 
 import "../../node_modules/react-grid-layout/css/styles.css";
 import "../../node_modules/react-resizable/css/styles.css";

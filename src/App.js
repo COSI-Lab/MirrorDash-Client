@@ -4,12 +4,13 @@ import "./App.css";
 import Profile from "./profile.jpg";
 import Ink from "react-ink";
 
-import MainStats from "./Components/MainStats";
-import DistroUsage from "./Components/DistroUsage";
-import HourlyPage from "./Components/HourlyPage";
-import DailyPage from "./Components/DailyPage";
-import MonthlyPage from "./Components/MonthlyPage";
-import AggregatePage from "./Components/AggregatePage";
+import MainStats from "./Pages/MainStats";
+import DistroUsage from "./Pages/DistroUsage";
+import HourlyPage from "./Pages/HourlyPage";
+import DailyPage from "./Pages/DailyPage";
+import MonthlyPage from "./Pages/MonthlyPage";
+import AggregatePage from "./Pages/AggregatePage";
+
 import StyledLink from "./Components/StyledLink";
 
 import { Route, Switch } from "react-router-dom";

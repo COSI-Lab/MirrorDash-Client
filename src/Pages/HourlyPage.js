@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import Lokka from "lokka";
 import { Transport } from "lokka-transport-http";
 
-import SlideInDiv from "./SlideInDiv";
-import TimeChart from "./TimeChart";
+import SlideInDiv from "../Components/SlideInDiv";
+import TimeChart from "../Components/TimeChart";
 
 import "../../node_modules/react-grid-layout/css/styles.css";
 import "../../node_modules/react-resizable/css/styles.css";
@@ -16,10 +16,10 @@ const client = new Lokka({
   transport: new Transport("http://localhost:4000/graphql")
 });
 
-class DailyPage extends Component {
+class HourlyPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { days: null };
+    this.state = { hours: null };
     this.getData();
   }
 
@@ -28,7 +28,7 @@ class DailyPage extends Component {
       .query(
         `
             {
-                days(last: 7) {
+                hours(last: 24) {
                     date
                     tx
                     rx
@@ -37,61 +37,61 @@ class DailyPage extends Component {
             }
         `
       )
-      .then(({ days }) => {
+      .then(({ hours }) => {
         this.setState(prevState => {
-          return { days };
+          return { hours };
         });
       });
   }
 
   render() {
-    const dayStyle = {
+    const hourStyle = {
       padding: 10,
       boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
       borderRadius: 5
     };
 
-    let dayElems = <div>Loading...</div>;
+    let hourElems = <div>Loading...</div>;
     let txs = [];
     let rxs = [];
 
-    if (this.state.days) {
-      dayElems = this.state.days.map((day, x) => (
+    if (this.state.hours) {
+      hourElems = this.state.hours.map((hour, x) => (
         <div
-          style={dayStyle}
+          style={hourStyle}
           key={x}
-          data-grid={{ x: x % 2, y: 3 + Math.ceil(x / 2), w: 1, h: 1 }}
+          data-grid={{ x: x % 4, y: 3 + Math.ceil(x / 4), w: 1, h: 1 }}
         >
           <div
             style={{ textAlign: "center", fontSize: "110%", marginBottom: 10 }}
           >
-            {day.date}
+            {hour.date}
           </div>
-          <div>Transfer: {minimizeBytes(day.tx)}</div>
-          <div>Recieve: {minimizeBytes(day.rx)}</div>
-          <div>Rate: {day.rate.toFixed(2)}Mbit/s</div>
+          <div>Transfer: {minimizeBytes(hour.tx)}</div>
+          <div>Recieve: {minimizeBytes(hour.rx)}</div>
+          <div>Rate: {hour.rate.toFixed(2)}Mbit/s</div>
         </div>
       ));
 
-      txs = this.state.days
-        .map(day => {
+      txs = this.state.hours
+        .map(hour => {
           return {
-            Time: day.date,
-            "Transferred Bandwidth": day.tx,
-            label: `Transferred: ${(day.tx / 1e12).toFixed(
+            Time: hour.date.split(" ")[1],
+            "Transferred Bandwidth": hour.tx,
+            label: `Transferred: ${(hour.tx / 1e9).toFixed(
               3
-            )}TB\nRecieved: ${(day.rx / 1e12).toFixed(
+            )}GB\nRecieved: ${(hour.rx / 1e9).toFixed(
               3
-            )}TB\nRate: ${day.rate.toFixed(2)}Mbit/s`
+            )}GB\nRate: ${hour.rate.toFixed(2)}Mbit/s`
           };
         })
         .reverse();
 
-      rxs = this.state.days
-        .map(day => {
+      rxs = this.state.hours
+        .map(hour => {
           return {
-            Time: day.date,
-            "Recieved Bandwidth": day.rx
+            Time: hour.date.split(" ")[1],
+            "Recieved Bandwidth": hour.rx
           };
         })
         .reverse();
@@ -107,11 +107,11 @@ class DailyPage extends Component {
             fontSize: "100%"
           }}
         >
-          Daily Stats
+          Hourly Stats
         </h2>
         <ReactGridLayout
           className="layout"
-          cols={2}
+          cols={4}
           rowHeight={100}
           width={960}
           margin={[30, 30]}
@@ -119,18 +119,18 @@ class DailyPage extends Component {
           isDraggable={false}
         >
           <div
-            style={dayStyle}
+            style={hourStyle}
             key="graph"
-            data-grid={{ x: 0, y: 0, w: 2, h: 3 }}
+            data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
           >
-            <h4 style={{ margin: 0, textAlign: "center" }}>Last 7 Days</h4>
-            <TimeChart hour={false} txs={txs} rxs={rxs} />
+            <h4 style={{ margin: 0, textAlign: "center" }}>Last 24 Hours</h4>
+            <TimeChart hour txs={txs} rxs={rxs} />
           </div>
-          {dayElems}
+          {hourElems}
         </ReactGridLayout>
       </SlideInDiv>
     );
   }
 }
 
-export default DailyPage;
+export default HourlyPage;

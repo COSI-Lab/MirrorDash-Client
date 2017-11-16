@@ -1,8 +1,8 @@
 import Lokka from "lokka";
 import { Transport } from "lokka-transport-http";
 import React, { Component } from "react";
-import MirrorGrid from "./MirrorGrid";
-import SlideInDiv from "./SlideInDiv";
+import MirrorGrid from "../Components/MirrorGrid";
+import SlideInDiv from "../Components/SlideInDiv";
 
 const client = new Lokka({
   transport: new Transport("http://localhost:4000/graphql")

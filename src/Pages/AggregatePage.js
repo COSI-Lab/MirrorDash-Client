@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Lokka from "lokka";
 import { Transport } from "lokka-transport-http";
 
-import SlideInDiv from "./SlideInDiv";
+import SlideInDiv from "../Components/SlideInDiv";
 
 import { minimizeBytes } from "../util";
 
