@@ -2,7 +2,7 @@ import ubuntuLogo from "../img/logo/ubuntu-logo32.png";
 import blenderlogo from "../img/logo/blender_logo.png";
 import linuxmintLogo from "../img/logo/linuxmint_logo.png";
 import libreofficeLogo from "../img/logo/libreoffice_logo.png";
-import opensuseLogo from "../img/logo/opensuse_logo.jpg";
+import opensuseLogo from "../img/logo/opensuse_logo.png";
 import centosLogo from "../img/logo/centos_logo.png";
 import parrotsecLogo from "../img/logo/parrotsec_logo.png";
 import vlcLogo from "../img/logo/vlc_logo.png";
