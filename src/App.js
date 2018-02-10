@@ -27,7 +27,6 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <img src={Profile} />
           <StyledLink to="/">
             <Ink />Overall
           </StyledLink>

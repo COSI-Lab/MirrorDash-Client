@@ -37,22 +37,24 @@ class MirrorGrid extends Component {
 
     const GridItemStyle = {
       boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-      borderRadius: "3px",
       borderRadius: 5
     };
 
     let rateDiff, txDiff, rxDiff;
 
     if (this.state.days) {
-      txDiff = ((this.state.days[0].tx - this.state.days[1].tx) /
+      txDiff = (
+        (this.state.days[0].tx - this.state.days[1].tx) /
         this.state.days[0].tx *
         100
       ).toFixed(2);
-      rxDiff = ((this.state.days[0].rx - this.state.days[1].rx) /
+      rxDiff = (
+        (this.state.days[0].rx - this.state.days[1].rx) /
         this.state.days[0].rx *
         100
       ).toFixed(2);
-      rateDiff = ((this.state.days[0].rate - this.state.days[1].rate) /
+      rateDiff = (
+        (this.state.days[0].rate - this.state.days[1].rate) /
         this.state.days[0].rate *
         100
       ).toFixed(2);
@@ -65,7 +67,7 @@ class MirrorGrid extends Component {
         cols={12}
         rowHeight={150}
         margin={[30, 30]}
-        width={960}
+        width={1200}
         isResizable={false}
         isDraggable={false}
       >
@@ -75,7 +77,7 @@ class MirrorGrid extends Component {
             {this.state.topTen &&
               this.state.topTen.map(distro => {
                 return (
-                  <li>
+                  <li key={distro.distro}>
                     {distro.distro}
                     <span>{distro.GB}GB</span>
                   </li>

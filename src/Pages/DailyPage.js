@@ -78,11 +78,9 @@ class DailyPage extends Component {
           return {
             Time: day.date,
             "Transferred Bandwidth": day.tx,
-            label: `Transferred: ${(day.tx / 1e12).toFixed(
-              3
-            )}TB\nRecieved: ${(day.rx / 1e12).toFixed(
-              3
-            )}TB\nRate: ${day.rate.toFixed(2)}Mbit/s`
+            label: `Transferred: ${(day.tx / 1e12).toFixed(3)}TB\nRecieved: ${(
+              day.rx / 1e12
+            ).toFixed(3)}TB\nRate: ${day.rate.toFixed(2)}Mbit/s`
           };
         })
         .reverse();
@@ -113,7 +111,7 @@ class DailyPage extends Component {
           className="layout"
           cols={2}
           rowHeight={100}
-          width={960}
+          width={1200}
           margin={[30, 30]}
           isResizable={false}
           isDraggable={false}

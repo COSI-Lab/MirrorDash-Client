@@ -3,23 +3,15 @@ import {
   VictoryBar,
   VictoryChart,
   VictoryAxis,
-  VictoryTheme,
   VictoryStack,
   VictoryTooltip,
   VictoryLegend
 } from "victory";
 
 class TimeChart extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    console.log(this.props.txs);
-    console.log(this.props.rxs);
-
     return (
-      <VictoryChart width={700} domainPadding={40} animate>
+      <VictoryChart width={1100} domainPadding={40}>
         <VictoryLegend
           orientation="horizontal"
           data={[
@@ -32,7 +24,8 @@ class TimeChart extends Component {
           tickFormat={x =>
             this.props.hour
               ? x.toString().split(":")[0] % 2 === 0 ? x : " "
-              : x}
+              : x
+          }
           style={{
             tickLabels: { fontSize: 10 }
           }}
@@ -40,15 +33,17 @@ class TimeChart extends Component {
         <VictoryAxis
           dependentAxis
           tickFormat={x =>
-            this.props.hour
-              ? `${x / 1000000000} GB`
-              : `${x / 1000000000000} TB`}
+            this.props.hour ? `${x / 1e9} GB` : `${x / 1e12} TB`
+          }
           style={{
             grid: { stroke: "slategrey" },
             tickLabels: { fontSize: 10 }
           }}
         />
-        <VictoryStack colorScale={["#94CD27", "#606060"]}>
+        <VictoryStack
+          colorScale={["#94CD27", "#606060"]}
+          animate={{ onLoad: { duration: 250 } }}
+        >
           <VictoryBar data={this.props.rxs} x="Time" y="Recieved Bandwidth" />
           <VictoryBar
             labelComponent={

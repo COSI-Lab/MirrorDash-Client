@@ -78,11 +78,9 @@ class HourlyPage extends Component {
           return {
             Time: hour.date.split(" ")[1],
             "Transferred Bandwidth": hour.tx,
-            label: `Transferred: ${(hour.tx / 1e9).toFixed(
-              3
-            )}GB\nRecieved: ${(hour.rx / 1e9).toFixed(
-              3
-            )}GB\nRate: ${hour.rate.toFixed(2)}Mbit/s`
+            label: `Transferred: ${(hour.tx / 1e9).toFixed(3)}GB\nRecieved: ${(
+              hour.rx / 1e9
+            ).toFixed(3)}GB\nRate: ${hour.rate.toFixed(2)}Mbit/s`
           };
         })
         .reverse();
@@ -113,7 +111,7 @@ class HourlyPage extends Component {
           className="layout"
           cols={4}
           rowHeight={100}
-          width={960}
+          width={1200}
           margin={[30, 30]}
           isResizable={false}
           isDraggable={false}

@@ -113,7 +113,7 @@ class MonthlyPage extends Component {
           className="layout"
           cols={3}
           rowHeight={100}
-          width={960}
+          width={1200}
           margin={[30, 30]}
           isResizable={false}
           isDraggable={false}
