@@ -16,7 +16,7 @@ const client = new Lokka({
   transport: new Transport("http://localhost:4000/graphql")
 });
 
-const DistroContainer = styled.div`
+const RepoContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
@@ -51,12 +51,13 @@ const DistroContainer = styled.div`
   }
 `;
 
-const Distro = props => {
-  const { distro, bytes } = props.distro;
+const Repo = props => {
+  const { bytes } = props.distro;
+  const repo = props.distro.distro;
   return (
-    <DistroContainer style={props.style} key={props.key}>
+    <RepoContainer style={props.style} key={props.key}>
       <img
-        src={repoImages[distro]}
+        src={repoImages[repo]}
         alt="logo"
         style={{
           paddingRight: 20
@@ -64,12 +65,12 @@ const Distro = props => {
       />
       <div>
         <h3>
-          {props.num}: {distro}
+          {props.num}: {repo}
         </h3>
         <span>{minimizeBytes(bytes)}</span>
       </div>
       <div className="movement">&#9650;1</div>
-    </DistroContainer>
+    </RepoContainer>
   );
 };
 
@@ -112,7 +113,7 @@ class DistroUsage extends Component {
             fontSize: "100%"
           }}
         >
-          Daily Distro Stats
+          Daily Repository Stats
         </h2>
         {this.state.distrousage && (
           <ReactGridLayout
@@ -125,7 +126,7 @@ class DistroUsage extends Component {
             isDraggable={false}
           >
             {this.state.distrousage.map((distro, x) => (
-              <Distro
+              <Repo
                 num={x + 1}
                 distro={distro}
                 key={x}

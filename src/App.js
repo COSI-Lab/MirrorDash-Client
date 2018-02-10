@@ -30,8 +30,8 @@ class App extends Component {
           <StyledLink to="/">
             <Ink />Overall
           </StyledLink>
-          <StyledLink to="/distrousage">
-            <Ink />Distro Usage
+          <StyledLink to="/repousage">
+            <Ink />Repo Usage
           </StyledLink>
           <StyledLink to="/hourly">
             <Ink />Hourly
@@ -51,7 +51,7 @@ class App extends Component {
           <main>
             <Switch>
               <Route exact path="/" component={MainStats} />
-              <Route path="/distrousage" component={DistroUsage} />
+              <Route path="/repousage" component={DistroUsage} />
               <Route path="/hourly" component={HourlyPage} />
               <Route path="/daily" component={DailyPage} />
               <Route path="/monthly" component={MonthlyPage} />
