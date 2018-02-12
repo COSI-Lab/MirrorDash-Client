@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Profile from "./profile.jpg";
 import Ink from "react-ink";
 
 import MainStats from "./Pages/MainStats";

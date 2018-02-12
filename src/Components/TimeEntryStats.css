@@ -1,0 +1,16 @@
+.timeentry_stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.timeentry_stats div {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeentry_stats div span {
+  font-size: 14px;
+}

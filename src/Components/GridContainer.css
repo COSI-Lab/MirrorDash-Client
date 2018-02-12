@@ -1,0 +1,16 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Have a 2 column layout in these grids*/
+  grid-gap: 20px;
+}
+
+.gridContainer .griditem {
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+}
+
+.gridContainer .griditem.fullWidth {
+  grid-column: 1 / span 2;
+}
