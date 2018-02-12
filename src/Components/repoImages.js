@@ -30,8 +30,10 @@ import clonezillaLogo from "../img/logo/clonezilla_logo.jpg";
 import raspbianLogo from "../img/logo/raspbian_logo.png";
 import freebsdLogo from "../img/logo/freebsd_logo.png";
 import slitazLogo from "../img/logo/slitaz_logo.png";
+import alpineLogo from "../img/logo/alpine_logo.jpg";
 
 const repoImages = {
+  alpine: alpineLogo,
   blender: blenderlogo,
   ubuntu: ubuntuLogo,
   linuxmint: linuxmintLogo,
